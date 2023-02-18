@@ -15,7 +15,7 @@ const renderGalleryListItem = (img) => img.reduce((acc,{preview, original, descr
 </div>`, '');
 
 const incertListItem = (string) => {
-    galleryList.insertAdjacentHTML('beforeend', string);
+galleryList.insertAdjacentHTML('beforeend', string);
 };
 
 const result = renderGalleryListItem(galleryItems);
@@ -34,6 +34,13 @@ let handleImgClick = (event) => {
     const instance = basicLightbox.create(`
 <img src="${origin}" width="800" height="600">`);
     instance.show();
+
+    
+    let handleCloseImg = (event) => {
+        if (event.code === 'Escape')
+            instance.close();
+ }
+    galleryList.addEventListener('keydown', handleCloseImg);
 }
 
 galleryList.addEventListener('click', handleImgClick);
