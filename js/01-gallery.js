@@ -38,7 +38,8 @@ let handleImgClick = (event) => {
     
     let handleCloseImg = (event) => {
         if (event.code === 'Escape')
-            instance.close();
+          instance.close();
+      galleryList.removeEventListener('keydown', handleCloseImg);
  }
     galleryList.addEventListener('keydown', handleCloseImg);
 }
